@@ -21,8 +21,9 @@ async def test_posts(db: Session = Depends(get_db)):
 
 
 @router.get('/',response_model=List[schemas.Post])
-async def root(db: Session = Depends(get_db)):
-    posts = db.query(models.Post).all()
+async def root(db: Session = Depends(get_db),
+               current_user: int = Depends(oauth2.get_current_user)):
+    posts = db.query(models.Post).filter(models.Post.owner_id==current_user.id).all()
     return posts
 
 
