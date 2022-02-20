@@ -22,8 +22,10 @@ async def test_posts(db: Session = Depends(get_db)):
 
 @router.get('/',response_model=List[schemas.Post])
 async def get_posts(db: Session = Depends(get_db),
-               current_user: int = Depends(oauth2.get_current_user)):
-    posts = db.query(models.Post).all()
+               current_user: int = Depends(oauth2.get_current_user),
+                    limit: int = 10, skip: int = 0):
+
+    posts = db.query(models.Post).limit(limit).offset(skip).all()
     return posts
 
 
