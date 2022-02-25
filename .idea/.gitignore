@@ -8,3 +8,4 @@
 /httpRequests/
 venv/
 .env
+test.py
