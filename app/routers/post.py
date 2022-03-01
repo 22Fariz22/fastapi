@@ -6,8 +6,6 @@ from sqlalchemy.orm import Session
 from ..database import engine, get_db
 from app import models, schemas, utils
 from app import oauth2
-# from app.main import app
-# models.Base.metadata.create_all(bind=engine)
 
 router = APIRouter(
     prefix='/posts',
