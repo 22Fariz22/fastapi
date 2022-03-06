@@ -4,8 +4,9 @@ from .database import engine
 from app.routers import post, user, auth, vote
 from app.config import settings
 
-
-models.Base.metadata.create_all(bind=engine)
+# # при каждом запуске будут отслеживатся все изменения в models и автоматически запускать изменения в бд
+# # но тк у нас есть  alembic,то мы закоментируем это
+# models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
